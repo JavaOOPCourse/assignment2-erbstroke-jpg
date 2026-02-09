@@ -8,50 +8,71 @@ public class Book {
 
     // TODO: Implement parameterized constructor
     public Book(String title, String author, int year) {
-        // implement
+        this.title = title;
+        this.author = author;
+        this.year = year;
     }
 
     // TODO: Implement copy constructor
     public Book(Book other) {
-        // implement
+        this.title = other.title;
+        this.author = other.author;
+        this.year = other.year;
     }
 
     // TODO: Implement getters
     public String getTitle() {
-        return null;
+        return title;
     }
 
     public String getAuthor() {
-        return null;
+        return author;
     }
 
     public int getYear() {
-        return 0;
+        return year;
     }
 
     public boolean isAvailable() {
-        return false;
+        return isAvailable;
     }
 
     // TODO: Implement borrow logic
     public void borrowBook() {
-        // implement
+        if (isAvailable){
+            isAvailable = false;
+            System.out.println("The book has been borrowed");
+        }
+        else {
+            System.out.println("Sorry, the book isn't available");
+        }
     }
 
     // TODO: Implement return logic
     public void returnBook() {
-        // implement
+        if (!isAvailable){
+            isAvailable = true;
+            System.out.println("The book has been returned");
+        }
+        else {
+            System.out.println("The book is already returned, please, get sure that you're giving true name of the book");
+        }
     }
 
     // TODO: Override toString()
     @Override
     public String toString() {
-        return "";
+        return "Title: " + getTitle() + ", Author: " + getAuthor() + ", Year: " + getYear() + ", Available: " + isAvailable();
     }
 
     // TODO: Override equals()
     @Override
     public boolean equals(Object obj) {
-        return false;
+        if (this==obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Book other = (Book) obj;
+        return author.equals(other.author) && title.equals(other.title) && year == other.year;
     }
+
 }
